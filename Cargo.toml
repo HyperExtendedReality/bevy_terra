@@ -1,0 +1,25 @@
+[package]
+name = "bevy_terra"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.96"
+description = "Eroded, smooth, editable voxel terrain"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+bevy = { version = "0.19.1", default-features = false, features = ["3d", "ui", "bevy_gizmos", "bevy_log"] }
+fast-surface-nets = "0.2.1"
+noise = "0.9"
+
+[dev-dependencies]
+naga = { version = "29", features = ["wgsl-in"] }
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 3
+
+[profile.release]
+lto = "thin"
+
